@@ -29,7 +29,7 @@ Go to https://us.ovhcloud.com/vps/cheap-vps/ and buy a VPS.
 
 ### Login to VPS and create a new user with sudo ability. 
 
-Once you recieve the email with the default login connect to your VPS over ssh. I'm on a mac using the terminal so its `ssh ubuntu@ip` but you can use any ssh client like Putty.  
+Once you recieve the email with the default login connect to your VPS over ssh. I'm on a mac using the terminal so its `ssh ubuntu@xxx.xxx.xxx.xxx` but you can use any ssh client like Putty.  
 
 Create a user, my example is newuser but make sure you use something you'll remember that's uncommon.
 ```
@@ -99,6 +99,24 @@ Hit `esc`, type `:wq` and hit enter. Finish this by restarting sshd service.
 
 ```
 sudo systemctl restart sshd
+```
+
+Test to make sure the ubuntu account is disabled.
+
+```
+me@localhost ~ % ssh ubuntu@xxx.xxx.xxx.xxx
+ubuntu@xxx.xxx.xxx.xxx's password: 
+Permission denied, please try again.
+ubuntu@xxx.xxx.xxx.xxx's password: 
+
+```
+
+Close your session and relogin with your new account `ssh newuser@xxx.xxx.xxx.xxx`. 
+
+```
+me@localhost ~ % ssh newuser@xxx.xxx.xxx.xxx
+newuser@xxx.xxx.xxx.xxx's password: 
+Welcome to Ubuntu 21.04 (GNU/Linux 5.11.0-17-generic x86_64)
 ```
 
 ### Enable ufw and allow ssh.
