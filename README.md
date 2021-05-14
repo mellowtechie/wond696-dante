@@ -1,1 +1,1 @@
-# wond696-dante
+# Dante socks5 Proxy setup on OVHcloud Ubunto VPS
