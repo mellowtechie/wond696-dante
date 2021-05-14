@@ -29,7 +29,7 @@ Go to https://us.ovhcloud.com/vps/cheap-vps/ and buy a VPS.
 
 ### Login to VPS and create a new user with sudo ability. 
 
-Once you recieve the email with the default login connect to your VPS over ssh. I'm on a mac using the terminal so its "ssh ubuntu@ip" but you can use any ssh client like Putty.  
+Once you recieve the email with the default login connect to your VPS over ssh. I'm on a mac using the terminal so its `ssh ubuntu@ip` but you can use any ssh client like Putty.  
 
 Create a user, my example is newuser but make sure you use something you'll remember that's uncommon.
 ```
@@ -80,6 +80,26 @@ For extra security you could switch to private key authentication but I won't ge
 
 
 ### Disable sshd login with the default 'ubuntu' account.
+
+In this next step we will disable the default ubuntu account from logging in via ssh. I do this because its a common brute force account attempt.  
+I user the vi editor but you may find vim or nano easier.
+https://www.shell-tips.com/cheat-sheets/vim-quick-references/
+
+```
+sudo vi /etc/ssh/sshd_config
+```
+
+Scroll to the end and hit `a` to enter insert mode, hit enter twice, and enter the following line.
+
+```
+DenyUsers ubuntu
+```
+
+Hit `esc`, type `:wq` and hit enter. Finish this by restarting sshd service.
+
+```
+sudo systemctl restart sshd
+```
 
 ### Enable ufw and allow ssh.
 
