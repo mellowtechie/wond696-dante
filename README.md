@@ -1,10 +1,10 @@
 # Dante socks5 Proxy setup on OVHcloud Ubuntu VPS
-I have build this as a setp by step guide to building a socks5 proxy on an Ubuntu VPS
+I have build this as a step by step guide to building a socks5 proxy on an Ubuntu VPS
 
 ## Environment Details
 
 OVHcloud Starter VPS https://us.ovhcloud.com/vps/cheap-vps/  
-Latest Ubuntu Build  
+Latest Ubuntu Build 20.10  
 Dante socks5 proxy https://www.inet.no/dante/  
 Fail2ban https://www.fail2ban.org/wiki/index.php/Main_Page  
 
