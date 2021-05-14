@@ -36,7 +36,7 @@ Create a user, my example is newuser but make sure you use something you'll reme
 sudo adduser newuser
 ```
 
-Follow the instructions to complete the process
+Follow the instructions to complete the process.
 ```
 Adding user `newuser' ...
 Adding new group `newuser' (1005) ...
@@ -55,6 +55,29 @@ Enter the new value, or press ENTER for the default
  Other []: 
 Is the information correct? [Y/n] Ysudo
 ```
+
+Add this user to the sudo group.
+```
+sudo usermod -aG sudo newuser
+```
+
+Switch to newuser.
+
+```
+su - newuser
+```
+
+Test sudo permissions.
+
+```
+newuser@ubuntu:~$ sudo whoami
+[sudo] password for newuser: 
+root
+newuser@ubuntu:~$ 
+```
+
+For extra security you could switch to private key authentication but I won't get into that. 
+
 
 ### Disable sshd login with the default 'ubuntu' account.
 
