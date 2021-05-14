@@ -297,6 +297,44 @@ Anywhere                   REJECT      210.14.142.85
 22/tcp (v6)                ALLOW       Anywhere (v6)             
 ```
 
-### Download, compile, and install dante. 
+### Download and install dante. 
+
+Now we get to the docker install of dante, because we can. start by installing docker and docker.io. 
+
+```
+sudo apt install docker docker.io
+```
+
+```
+logoutput: /var/log/socks.log
+
+internal: 51.81.85.19 port = 1080
+external: 51.81.85.19
+
+clientmethod: none
+socksmethod: username
+user.privileged: root
+user.unprivileged: nobody
+#user.libwrap: nobody
+
+
+client pass {
+        from: 0.0.0.0/0 to: 0.0.0.0/0
+        log: error connect disconnect
+}
+client block {
+        from: 0.0.0.0/0 to: 0.0.0.0/0
+        log: connect error
+}
+socks pass {
+        from: 0.0.0.0/0 to: 0.0.0.0/0
+        log: error connect disconnect
+}
+socks block {
+        from: 0.0.0.0/0 to: 0.0.0.0/0
+        log: connect error
+}
+
+```
 
 ### Configure and test dante.
