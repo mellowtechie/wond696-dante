@@ -3,10 +3,10 @@ I have build this as a setp by step guide to building a socks5 proxy on an Ubunt
 
 ## Environment Details
 
-OVHcloud Starter VPS https://us.ovhcloud.com/vps/cheap-vps/ 
-Latest Ubuntu Build 
-Dante socks5 proxy https://www.inet.no/dante/ 
-Fail2ban https://www.fail2ban.org/wiki/index.php/Main_Page 
+OVHcloud Starter VPS https://us.ovhcloud.com/vps/cheap-vps/  
+Latest Ubuntu Build  
+Dante socks5 proxy https://www.inet.no/dante/  
+Fail2ban https://www.fail2ban.org/wiki/index.php/Main_Page  
 
 ## Build Overview
 
