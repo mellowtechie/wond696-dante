@@ -21,15 +21,40 @@ Fail2ban https://www.fail2ban.org/wiki/index.php/Main_Page
 ### Create VPS
 
 Create Account https://www.ovh.com/auth/signup/#/  
-Dante is very lightweight so I'm using the Starter VPS with Snapshots.
-Cost is under $5 a month for 1 vCore, 2GB of Memory, 20GB of Disk, and 100Mbps of bandwidth. 
-OVHcloud allows you to add up to 16 additional IPv4 IP's at a one time cost of $3 each, make sure you allocate and enable or they may recover the IP's. This is what I was told by support but I cannot guarantee the terms, talk to them yourself. 
-If you think you need a higher grade VPS now is the time to do it.
+Dante is very lightweight so I'm using the Starter VPS with Snapshots.  
+Cost is under $5 a month for 1 vCore, 2GB of Memory, 20GB of Disk, and 100Mbps of bandwidth.   
+OVHcloud allows you to add up to 16 additional IPv4 IP's at a one time cost of $3 each, make sure you allocate and enable or they may recover the IP's. This is what I was told by support but I cannot guarantee the terms, talk to them yourself.  
+If you think you need a higher grade VPS now is the time to do it.  
 Go to https://us.ovhcloud.com/vps/cheap-vps/ and buy a VPS.
 
 ### Login to VPS and create a new user with sudo ability. 
 
-Once you recieve the email with the default login connect to your VPS over ssh. I'm on a mac using the terminal so its "ssh ubuntu@ip".
+Once you recieve the email with the default login connect to your VPS over ssh. I'm on a mac using the terminal so its "ssh ubuntu@ip" but you can use any ssh client like Putty.  
+
+Create a user, my example is newuser but make sure you use something you'll remember that's uncommon.
+```
+sudo adduser newuser
+```
+
+Follow the instructions to complete the process
+```
+Adding user `newuser' ...
+Adding new group `newuser' (1005) ...
+Adding new user `newuser' (1004) with group `newuser' ...
+Creating home directory `/home/newuser' ...
+Copying files from `/etc/skel' ...
+Enter new UNIX password: 
+Retype new UNIX password: 
+passwd: password updated successfully
+Changing the user information for newuser
+Enter the new value, or press ENTER for the default
+ Full Name []: Name                
+ Room Number []: 1234
+ Work Phone []: 0123456789
+ Home Phone []: 0987654321
+ Other []: 
+Is the information correct? [Y/n] Ysudo
+```
 
 ### Disable sshd login with the default 'ubuntu' account.
 
