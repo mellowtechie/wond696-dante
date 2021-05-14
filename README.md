@@ -13,10 +13,11 @@ Fail2ban https://www.fail2ban.org/wiki/index.php/Main_Page
 1) Create VPS. The deante socks5 proxy is simple to use but as of the time of this writing has an issue with authentication in the Ubuntu repository.
 2) Login to VPS and create a new user with sudo ability. 
 3) Disable sshd login with the default 'ubuntu' account.
-4) Enable ufw and allow ssh.
-5) Install and configure fail2ban to protect sshd using the ufw firewall.
-6) Download, compile, and install dante. 
-7) Configure and test dante.
+4) Update the distribution and apps
+5) Enable ufw and allow ssh.
+6) Install and configure fail2ban to protect sshd using the ufw firewall.
+7) Download, compile, and install dante. 
+8) Configure and test dante.
 
 ### Create VPS
 
@@ -117,6 +118,39 @@ Close your session and relogin with your new account `ssh newuser@xxx.xxx.xxx.xx
 me@localhost ~ % ssh newuser@xxx.xxx.xxx.xxx
 newuser@xxx.xxx.xxx.xxx's password: 
 Welcome to Ubuntu 21.04 (GNU/Linux 5.11.0-17-generic x86_64)
+```
+
+### Update the distribution and apps
+
+```
+sudo do-release-upgrade
+```
+
+Just follow the prompts and read the man page. https://manpages.ubuntu.com/manpages/precise/man8/do-release-upgrade.8.html. 
+
+Run the update and upgrade sequences after the distribution is upgraded and you've logged back in.
+
+```
+me@localhost:~$ sudo apt update
+[sudo] password for newuser: 
+Get:1 http://security.ubuntu.com/ubuntu hirsute-security InRelease [101 kB]
+Hit:2 http://nova.clouds.archive.ubuntu.com/ubuntu hirsute InRelease           
+Get:3 http://nova.clouds.archive.ubuntu.com/ubuntu hirsute-updates InRelease [109 kB]
+Hit:4 http://nova.clouds.archive.ubuntu.com/ubuntu hirsute-backports InRelease
+Fetched 209 kB in 1s (274 kB/s)
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+All packages are up to date.
+```
+```
+me@localhost:~$ sudo apt upgrade
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+Calculating upgrade... Done
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+me@localhost:~$ 
 ```
 
 ### Enable ufw and allow ssh.
