@@ -1,4 +1,4 @@
-# Dante socks5 Proxy setup on OVHcloud Ubunto VPS
+# Dante socks5 Proxy setup on OVHcloud Ubuntu VPS
 I have build this as a setp by step guide to building a socks5 proxy on an Ubuntu VPS
 
 ##Environment Details
