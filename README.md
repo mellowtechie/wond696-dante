@@ -317,7 +317,7 @@ sudo vi /etc/danted.conf
 ```
 
 Hit `i` to insert and paste in the following.  
-Make sure you put in your public IP where xxx.xxx.xxx.xxx is. If you have multiple IP's bound duplicate the internal: and external lines for each IP.
+Make sure you put in your public IP where xxx.xxx.xxx.xxx is. If you have multiple IP's bound duplicate the `internal:` and `external:` lines for each IP.
 
 ```
 logoutput: /var/log/socks.log
