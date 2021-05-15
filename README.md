@@ -391,4 +391,4 @@ Now, with everything done lets test. As usual replace the username, password, an
 curl -v -x socks5://newuser:password@xxx.xxx.xxx.xxx:1080 https://www.yandex.ru/
 ```
 
-At this point you should be working,
+At this point you should be working, if you want to setup Ubuntu to automatically stay updated here is a guide. https://www.cyberciti.biz/faq/how-to-set-up-automatic-updates-for-ubuntu-linux-18-04/
