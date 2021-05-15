@@ -299,17 +299,31 @@ Anywhere                   REJECT      210.14.142.85
 
 ### Download and install dante. 
 
-Now we get to the docker install of dante, because we can. start by installing docker and docker.io. 
+Now we get to the install and configuration of dante 
 
 ```
-sudo apt install docker docker.io
+sudo apt install dante-server
 ```
+
+At one point there was an issue with the apt package dante-server 1.4.2 package where authentication was broken but it seems to be fixed.  
+If you need to compile from source there are many guides out there.
+
+
+### Configure and test dante.
+
+Using `vi` as above lets create the danted.conf file.
+```
+sudo vi /etc/danted.conf
+```
+
+Hit `i` to insert and paste in the following.  
+Make sure you put in your public IP where xxx.xxx.xxx.xxx is. If you have multiple IP's bound duplicate the internal: and external lines for each IP.
 
 ```
 logoutput: /var/log/socks.log
 
-internal: 51.81.85.19 port = 1080
-external: 51.81.85.19
+internal: xxx.xxx.xxx.xxx port = 1080
+external: xxx.xxx.xxx.xxx
 
 clientmethod: none
 socksmethod: username
@@ -337,4 +351,44 @@ socks block {
 
 ```
 
-### Configure and test dante.
+Hit `esc`, type `:wq`, and hit enter to save.  
+
+Enable and start the dante service
+
+```
+sudo systemctl enable danted
+sudo systemctl start danted
+```
+
+Add a firewall rule for here, if you chose a port other than 1080 then use it here.
+
+```
+sudo ufw allow 1080/tcp
+sudo ufw status
+```
+
+If everything is ready you should see something similar.
+
+```
+Status: active
+
+To                         Action      From
+--                         ------      ----
+Anywhere                   REJECT      34.87.160.10              
+Anywhere                   REJECT      46.151.212.38             
+Anywhere                   REJECT      159.89.199.80             
+Anywhere                   REJECT      174.138.28.36             
+Anywhere                   REJECT      200.111.120.180           
+22/tcp                     ALLOW       Anywhere                  
+1080/tcp                   ALLOW       Anywhere                  
+22/tcp (v6)                ALLOW       Anywhere (v6)             
+1080/tcp (v6)              ALLOW       Anywhere (v6)       
+```
+
+Now, with everything done lets test. As usual replace the username, password, and IP with your configuration.
+
+```
+curl -v -x socks5://newuser:password@xxx.xxx.xxx.xxx:1080 https://www.yandex.ru/
+```
+
+At this point you should be working,
