@@ -311,7 +311,45 @@ If you need to compile from source there are many guides out there.
 
 ### Configure and test dante.
 
-If you are binding multiple IP's to your VPS pause and go do that first. For OVHcloud use the following guide and make sure the IP's bind and show up when you run `sudo ipconfig` before proceeding. https://support.us.ovhcloud.com/hc/en-us/articles/360014248820-How-to-Configure-IP-Aliasing-on-a-VPS. You may also need to review this to see how to assign multiple addresses on Ubuntu 20.10 with netplan. 
+If you are binding multiple IP's to your VPS pause and go do that first. For OVHcloud use the following guide and make sure the IP's bind and show up when you run `sudo ipconfig` before proceeding. https://support.us.ovhcloud.com/hc/en-us/articles/360014248820-How-to-Configure-IP-Aliasing-on-a-VPS. You may also need to review this to see how to assign multiple addresses on Ubuntu 20.10 with netplan.  
+
+It took some trial and error to get the netplan configuration correct but here is how I ended up doing it. Rather than creating ton's of duplicates I added all my IP's including the default (first in order) to the ens3 section following `addresses:`. IP's are obscured but you get the idea.
+
+```
+# This file is generated from information provided by the datasource.  Changes
+# to it will not persist across an instance reboot.  To disable cloud-init's
+# network configuration capabilities, write a file
+# /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg with the following:
+# network: {config: disabled}
+network:
+    version: 2
+    ethernets:
+        ens3:
+            dhcp4: true
+            match:
+                macaddress: fa:16:xx:xx:xx:xx
+            mtu: 1500
+            set-name: ens3
+            addresses:
+                - xxx.xxx.xxx.xxx/32
+                - xxx.xxx.xxx.xxx/32
+                - xxx.xxx.xxx.xxx/32
+                - xxx.xxx.xxx.xxx/32
+                - xxx.xxx.xxx.xxx/32
+                - xxx.xxx.xxx.xxx/32
+                - xxx.xxx.xxx.xxx/32
+                - xxx.xxx.xxx.xxx/32
+                - xxx.xxx.xxx.xxx/32
+                - xxx.xxx.xxx.xxx/32
+                - xxx.xxx.xxx.xxx/32
+                - xxx.xxx.xxx.xxx/32
+                - xxx.xxx.xxx.xxx/32
+                - xxx.xxx.xxx.xxx/32
+                - xxx.xxx.xxx.xxx/32
+                - xxx.xxx.xxx.xxx/32
+                - xxx.xxx.xxx.xxx/32
+~                                        
+```
 
 First rename the default conf file and then we will create a new one. Using `vi` as above lets create the danted.conf file.
 ```
