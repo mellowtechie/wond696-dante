@@ -327,7 +327,7 @@ network:
         ens3:
             dhcp4: true
             match:
-                macaddress: fa:16:xx:xx:xx:xx
+                macaddress: xx:xx:xx:xx:xx:xx
             mtu: 1500
             set-name: ens3
             addresses:
@@ -349,6 +349,12 @@ network:
                 - xxx.xxx.xxx.xxx/32
                 - xxx.xxx.xxx.xxx/32
                                       
+```
+
+Make sure you commit changes before moving on.
+
+```
+sudo netplan apply
 ```
 
 First rename the default conf file and then we will create a new one. Using `vi` as above lets create the danted.conf file.
