@@ -311,6 +311,8 @@ If you need to compile from source there are many guides out there.
 
 ### Configure and test dante.
 
+If you are binding multiple IP's to your VPS pause and go do that first. For OVHcloud use the following guide and make sure the IP's bind and show up when you run `sudo ipconfig` before proceeding. https://support.us.ovhcloud.com/hc/en-us/articles/360014248820-How-to-Configure-IP-Aliasing-on-a-VPS
+
 First rename the default conf file and then we will create a new one. Using `vi` as above lets create the danted.conf file.
 ```
 sudo mv /etc/danted.conf /etc/danted.conf.old
