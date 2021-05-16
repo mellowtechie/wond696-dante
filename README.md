@@ -321,7 +321,7 @@ Edit the netplan configuration.
 sudo vi /etc/netplan/50-cloud-init.yaml
 ```
 
-Rather than creating ton's of duplicates I added all my IP's including the default (first in order) to the ens3 section following `addresses:`. IP's and MAC address are obscured but you get the idea, you can copy/paste the `addresses:` section and below. Read this for help. https://netplan.io/examples/#using-multiple-addresses-on-a-single-interface
+Rather than creating ton's of duplicates I added all my IP's including the default (first in order) to the ens3 section by adding an `addresses:` section with IP lists. IP's and MAC address are obscured but you get the idea, you can copy/paste the `addresses:` section and below. Read this for help. https://netplan.io/examples/#using-multiple-addresses-on-a-single-interface
 
 ```
 # This file is generated from information provided by the datasource.  Changes
