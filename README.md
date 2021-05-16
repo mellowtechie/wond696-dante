@@ -315,8 +315,7 @@ If you are binding multiple IP's to your VPS pause and go do that first. For OVH
 
 First rename the default conf file and then we will create a new one. Using `vi` as above lets create the danted.conf file.
 ```
-sudo mv /etc/danted.conf /etc/danted.conf.old
-sudo vi /etc/danted.conf
+sudo mv /etc/danted.conf /etc/danted.conf.old && sudo vi /etc/danted.conf
 ```
 
 Hit `i` to insert and paste in the following.  
