@@ -311,8 +311,9 @@ If you need to compile from source there are many guides out there.
 
 ### Configure and test dante.
 
-Using `vi` as above lets create the danted.conf file.
+First rename the default conf file and then we will create a new one. Using `vi` as above lets create the danted.conf file.
 ```
+sudo mv vi /etc/danted.conf /etc/danted.conf.old
 sudo vi /etc/danted.conf
 ```
 
