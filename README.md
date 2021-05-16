@@ -313,7 +313,7 @@ If you need to compile from source there are many guides out there.
 
 If you are binding multiple IP's to your VPS pause and go do that first. For OVHcloud use the following guide and make sure the IP's bind and show up when you run `sudo ipconfig` before proceeding. https://support.us.ovhcloud.com/hc/en-us/articles/360014248820-How-to-Configure-IP-Aliasing-on-a-VPS. You may also need to review this to see how to assign multiple addresses on Ubuntu 20.10 with netplan.  
 
-It took some trial and error to get the netplan configuration correct but here is how I ended up doing it. Rather than creating ton's of duplicates I added all my IP's including the default (first in order) to the ens3 section following `addresses:`. IP's are obscured but you get the idea. Read this for help. https://netplan.io/examples/#using-multiple-addresses-on-a-single-interface
+It took some trial and error to get the netplan configuration correct but here is how I ended up doing it. Rather than creating ton's of duplicates I added all my IP's including the default (first in order) to the ens3 section following `addresses:`. IP's and MAC address are obscured but you get the idea, you can copy/paste the `addresses:` section and below. Read this for help. https://netplan.io/examples/#using-multiple-addresses-on-a-single-interface
 
 ```
 # This file is generated from information provided by the datasource.  Changes
