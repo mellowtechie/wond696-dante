@@ -329,7 +329,7 @@ If you need to compile from source there are many guides out there.
 
 ### Configure and test all extra IP's.
 
-If you are binding multiple IP's to your VPS pause and go do that first. For OVHcloud use the following guide and make sure the IP's bind and show up when you run `sudo ipconfig` before proceeding. https://support.us.ovhcloud.com/hc/en-us/articles/360014248820-How-to-Configure-IP-Aliasing-on-a-VPS. You may also need to review this to see how to assign multiple addresses on Ubuntu 20.10 with netplan.  
+If you are binding multiple IP's to your VPS pause and go do that first. For OVHcloud use the following guide and make sure you can ping each IP before proceeding. https://support.us.ovhcloud.com/hc/en-us/articles/360014248820-How-to-Configure-IP-Aliasing-on-a-VPS. You may also need to review this to see how to assign multiple addresses on Ubuntu 20.10 with netplan.  
 
 It took some trial and error to get the netplan configuration correct but here is how I ended up doing it. 
 
@@ -382,8 +382,6 @@ Make sure you commit changes before moving on.
 ```
 sudo netplan apply
 ```
-
-Take the time to ping each IP before proceeding and correct any typo's then commit changes again. 
 
 ### Configure and test dante.
 
