@@ -394,8 +394,7 @@ Hit `i` to insert and paste in the following.
 Make sure you put in your public IP where xxx.xxx.xxx.xxx is. If you have multiple IP's bound duplicate the `internal:` and `external:` lines for each IP.
 
 ```
-errorlog: socks.errlog
-logoutput: socks.log
+errorlog: syslog
 
 internal: xxx.xxx.xxx.xxx port = 1080
 external: xxx.xxx.xxx.xxx
