@@ -394,7 +394,8 @@ Hit `i` to insert and paste in the following.
 Make sure you put in your public IP where xxx.xxx.xxx.xxx is. If you have multiple IP's bound duplicate the `internal:` and `external:` lines for each IP.
 
 ```
-logoutput: /var/log/socks.log
+errorlog: socks.errlog
+logoutput: socks.log
 
 internal: xxx.xxx.xxx.xxx port = 1080
 external: xxx.xxx.xxx.xxx
@@ -404,7 +405,7 @@ socksmethod: username
 user.privileged: root
 user.unprivileged: nobody
 #user.libwrap: nobody
-
+external.rotation: same-same
 
 client pass {
         from: 0.0.0.0/0 to: 0.0.0.0/0
@@ -422,6 +423,7 @@ socks block {
         from: 0.0.0.0/0 to: 0.0.0.0/0
         log: connect error
 }
+
 
 ```
 
@@ -506,10 +508,10 @@ Anywhere                   REJECT      200.111.120.180
 1080/tcp (v6)              ALLOW       Anywhere (v6)       
 ```
 
-Now, with everything done lets test. As usual replace the username, password, and IP with your configuration.
+Now, with everything done let's test. As usual replace the username, password, and IP with your configuration. Run this against each IP you have and it should return the IP that you sent each request to. This will confirm what others will see when you use your proxy.
 
 ```
-curl -v -x socks5://proxyuser:password@xxx.xxx.xxx.xxx:1080 https://www.yandex.ru/
+curl -v -x socks5://proxyuser:password@xxx.xxx.xxx.xxx:1080 https://ifconfig.me/all
 ```
 
 At this point you should be working, if you want to setup Ubuntu to automatically stay updated here is a guide. https://www.cyberciti.biz/faq/how-to-set-up-automatic-updates-for-ubuntu-linux-18-04/
