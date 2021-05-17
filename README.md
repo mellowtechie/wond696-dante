@@ -442,7 +442,7 @@ Check to make sure the service started, if it failed read through the errors at 
 sudo systemctl status danted
 ```
 
-You should see something like this.
+You should see the following.
 
 ```
 ● danted.service - SOCKS (v4 and v5) proxy daemon (danted)
