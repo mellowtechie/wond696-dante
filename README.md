@@ -383,6 +383,8 @@ Make sure you commit changes before moving on.
 sudo netplan apply
 ```
 
+Take the time to ping each IP before proceeding and correct any typo's then commit changes again. 
+
 ### Configure and test dante.
 
 First rename the default conf file and then we will create a new one. Using `vi` as above lets create the danted.conf file.
@@ -432,6 +434,53 @@ Enable and start the dante service
 ```
 sudo systemctl enable danted
 sudo systemctl start danted
+```
+
+Check to make sure the service started, if it failed read through the errors at the bottom. 
+
+```
+sudo systemctl status danted
+```
+
+You should see something like this.
+
+```
+● danted.service - SOCKS (v4 and v5) proxy daemon (danted)
+     Loaded: loaded (/lib/systemd/system/danted.service; enabled; vendor preset: enabled)
+     Active: active (running) since Mon 2021-05-17 02:02:04 UTC; 4s ago
+       Docs: man:danted(8)
+             man:danted.conf(5)
+    Process: 9073 ExecStartPre=/bin/sh -c       uid=`sed -n -e "s/[[:space:]]//g" -e "s/#.*//" -e "/^user\.privileged/{s/[^:]*://p;q;>
+   Main PID: 9077 (danted)
+      Tasks: 20 (limit: 2281)
+     Memory: 8.3M
+     CGroup: /system.slice/danted.service
+             ├─9077 /usr/sbin/danted
+             ├─9078 danted: monitor
+             ├─9079 danted: negotia
+             ├─9080 danted: request
+             ├─9081 danted: request
+             ├─9082 danted: request
+             ├─9083 danted: request
+             ├─9084 danted: request
+             ├─9085 danted: request
+             ├─9086 danted: request
+             ├─9087 danted: request
+             ├─9088 danted: request
+             ├─9089 danted: request
+             ├─9090 danted: request
+             ├─9091 danted: request
+             ├─9092 danted: request
+             ├─9093 danted: request
+             ├─9094 danted: request
+             ├─9095 danted: request
+             └─9096 danted: io-chil
+
+May 17 02:02:04 vps-ad57bd8f systemd[1]: Starting SOCKS (v4 and v5) proxy daemon (danted)...
+May 17 02:02:04 vps-ad57bd8f systemd[1]: Started SOCKS (v4 and v5) proxy daemon (danted).
+May 17 02:02:04 vps-ad57bd8f danted[9077]: May 17 02:02:04 (1621216924.226008) danted[9077]: warning: openlogfile(): could not open o>
+May 17 02:02:04 vps-ad57bd8f danted[9077]: May 17 02:02:04 (1621216924.226599) danted[9077]: alert: configparsing(): could not (re)op>
+May 17 02:02:04 vps-ad57bd8f danted[9077]: May 17 02:02:04 (1621216924.229192) danted[9077]: warning: checkconfig(): more than one ex>
 ```
 
 Add a firewall rule for here, if you chose a port other than 1080 then use it here.
