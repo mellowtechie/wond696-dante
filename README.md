@@ -17,7 +17,8 @@ Fail2ban https://www.fail2ban.org/wiki/index.php/Main_Page
 5) Enable ufw and allow ssh.
 6) Install and configure fail2ban to protect sshd using the ufw firewall.
 7) Download, compile, and install dante. 
-8) Configure and test dante.
+8) Configure and test all extra IP's.
+9) Configure and test dante.
 
 ### Create VPS
 
@@ -62,6 +63,12 @@ Add this user to the sudo group.
 sudo usermod -aG sudo newuser
 ```
 
+Set the password for this user.
+
+```
+passwd newuser
+```
+
 Switch to newuser.
 
 ```
@@ -77,8 +84,19 @@ root
 newuser@ubuntu:~$ 
 ```
 
-For extra security you could switch to private key authentication but I won't get into that. 
+For extra security you could switch to private key authentication but I won't get into that.  
 
+Next, use the same process to create a proxy user for later, but in this case we don't want a home directory or the ability to login. Change proxyuser to whatever username you want, it cannot be a generic system name such as proxy.
+
+```
+sudo useradd -s /usr/sbin/nologin -M proxyuser
+```
+
+Set the password for proxyuser
+
+```
+passwd proxyuser
+```
 
 ### Disable sshd login with the default 'ubuntu' account.
 
@@ -309,7 +327,7 @@ At one point there was an issue with the apt package dante-server 1.4.2 package 
 If you need to compile from source there are many guides out there.
 
 
-### Configure and test dante.
+### Configure and test all extra IP's.
 
 If you are binding multiple IP's to your VPS pause and go do that first. For OVHcloud use the following guide and make sure the IP's bind and show up when you run `sudo ipconfig` before proceeding. https://support.us.ovhcloud.com/hc/en-us/articles/360014248820-How-to-Configure-IP-Aliasing-on-a-VPS. You may also need to review this to see how to assign multiple addresses on Ubuntu 20.10 with netplan.  
 
@@ -364,6 +382,8 @@ Make sure you commit changes before moving on.
 ```
 sudo netplan apply
 ```
+
+### Configure and test dante.
 
 First rename the default conf file and then we will create a new one. Using `vi` as above lets create the danted.conf file.
 ```
@@ -442,7 +462,7 @@ Anywhere                   REJECT      200.111.120.180
 Now, with everything done lets test. As usual replace the username, password, and IP with your configuration.
 
 ```
-curl -v -x socks5://newuser:password@xxx.xxx.xxx.xxx:1080 https://www.yandex.ru/
+curl -v -x socks5://proxyuser:password@xxx.xxx.xxx.xxx:1080 https://www.yandex.ru/
 ```
 
 At this point you should be working, if you want to setup Ubuntu to automatically stay updated here is a guide. https://www.cyberciti.biz/faq/how-to-set-up-automatic-updates-for-ubuntu-linux-18-04/
